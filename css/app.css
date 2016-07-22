@@ -5,8 +5,9 @@ body{
 
 /*container*/
 .container{
-    background-color: white;
-    margin: 28px;
+   
+   background-color: white; 
+     margin: 28px;
 margin-top: 0px;
     border: 1px solid white;
     height: 1020px;
@@ -29,20 +30,28 @@ margin-top: 0px;
     float:right;
 }
 
-header{
-   
-}
+
 h1{
     font-size: 20px;
      float: right;
     color: white;
+    margin-right: 70px;
+}
+
+strong{
+    margin-top: 15px;
 }
 /*main*/
-.
+.main{
+    margin-top: 60px;
+}
 
 
 /*side nav*/
-
+nav .img{
+    height: 25px;
+    width: 25px;
+}
 
 
 /*main content*/
