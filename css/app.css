@@ -1,10 +1,14 @@
+body{
+    background-color:grey;
+}
+
 /*header*/
 .back{
 
     background-image: url(../assets/header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 250px;
+    height: 270px;
     
 }
 .logo{
@@ -24,3 +28,12 @@ h1{
 }
 
 /*side nav*/
+
+
+
+/*main content*/
+
+
+h2{
+    font-size: 10px;
+}
