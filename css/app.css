@@ -2,13 +2,24 @@ body{
     background-color:grey;
 }
 
+
+/*container*/
+.container{
+    background-color: white;
+    margin: 28px;
+margin-top: 0px;
+    border: 1px solid white;
+    height: 1020px;
+}
+
 /*header*/
 .back{
 
     background-image: url(../assets/header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 270px;
+  height: 400px;
+    background-attachment:inherit;
     
 }
 .logo{
@@ -26,6 +37,9 @@ h1{
      float: right;
     color: white;
 }
+/*main*/
+.
+
 
 /*side nav*/
 
