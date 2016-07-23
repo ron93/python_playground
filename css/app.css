@@ -1,5 +1,5 @@
 body{
-    background-color:grey;
+    background-color:#bbbfc2;
 }
 
 
@@ -10,7 +10,7 @@ body{
      margin: 28px;
 margin-top: 0px;
     border: 1px solid white;
-    height: 1020px;
+    height: 1500px;
 }
 
 /*header*/
@@ -28,6 +28,7 @@ margin-top: 0px;
     height: 50px;
     background: red;
     float:right;
+   
 }
 
 
@@ -37,24 +38,32 @@ h1{
     color: white;
     margin-right: 70px;
 }
+h1 .one{
+    font-size: 32px;
+
+}
 
 strong{
     margin-top: 15px;
+    font-size: 48px;
+}
+
+strong span{
+    float: right;
 }
 /*main*/
 .main{
     margin-top: 60px;
+    margin-left: -37px;
 }
 
 
 /*side nav*/
-nav .img{
-    height: 25px;
-    width: 25px;
-    border: 1px solid ;
-   background-color: chartreuse;
-}
+.side-nav{
+    
 
+
+}
 nav ul{
      
 }
@@ -67,12 +76,25 @@ h2{
     font-size: 25px;
     display: inline;
 }
-br{
-    margin-left: 5px;
-}   
+
     
 }
 
 .columns div{
     
+}
+.side-nav ul{
+    background-color: dimgrey;
+    height: 60px;
+    
+
+    
+}
+
+.side-nav a{
+    margin-left:40%;
+ padding-top: 10px;
+}
+.side-nav img{
+    margin-left: 15%;
 }
