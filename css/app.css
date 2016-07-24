@@ -42,6 +42,10 @@ h1 .one{
     font-size: 32px;
 
 }
+    
+h1 .two{
+    margin-top: -10px;
+}
 
 strong{
     margin-top: 15px;
