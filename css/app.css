@@ -75,15 +75,31 @@ strong span{
 
 
 /*main content*/
-
+.para div{
+    padding-left: 
+}
 
 h2{
     font-size: 25px;
-    display: inline;
+    display:inline-block;
+    margin-left: 
+     
 }
 
-    
+.para p,.para .c{
+   margin-left: 70px;
+/*    margin-right: 70px;*/
+}   
+.para .b{
+  display: inherit;
 
+}
+.para img{
+margin-top: -30px;
+    margin-left: 70px;
+}
+
+/*side nav*/
 
 
 .side-nav ul{
