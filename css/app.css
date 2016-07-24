@@ -1,36 +1,17 @@
-/*fonts*/
-
-h1 strong{
-font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-}
-side-nav a{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    color: 9ba0a4;
-}
-
-h2 #a, #active{
-    font-family: 'Open Sans', sans-serif;
-    font-weight:600;
-    color: #36abe1;
-}
-h1 #one ,h2 #b{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-}
-.
-
-/**/
 body{
     background-color:#bbbfc2;
 }
 
 
+
+
+/**/
+
+
 /*container*/
 .container{
    
-   background-color: white; 
+   background-color: #fff; 
      margin: 28px;
 margin-top: 0px;
     border: 1px solid white;
@@ -122,7 +103,7 @@ h2{
 
 }
 .para img{
-margin-top: -30px;
+margin-top: -40px;
     margin-left: 60px;
     margin-right: 30px;
 }
@@ -154,3 +135,27 @@ margin-top: 50%;
     height: 408px;
 
 }
+
+
+/*fonts*/
+
+h1 strong{
+font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+}
+side-nav a{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: 9ba0a4;
+}
+
+h2 #a, #active{
+    font-family: 'Open Sans', sans-serif;
+    font-weight:600;
+    color: #36abe1;
+}
+h1 #one ,h2 #b{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+.
