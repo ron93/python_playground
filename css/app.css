@@ -10,7 +10,7 @@ body{
      margin: 28px;
 margin-top: 0px;
     border: 1px solid white;
-    height: 1500px;
+    height: 1300px;
 }
 
 /*header*/
@@ -54,18 +54,19 @@ strong span{
 /*main*/
 .main{
     margin-top: 60px;
-    margin-left: -37px;
+   margin-left: -16px;
 }
 
 
 /*side nav*/
 .side-nav{
-    
+    padding-top: 20px;
 
+    height: 940px;
 
 }
-nav ul{
-     
+.side-nav .active{
+     background-color: white;
 }
 
 
@@ -78,23 +79,30 @@ h2{
 }
 
     
-}
 
-.columns div{
-    
-}
+
+
 .side-nav ul{
-    background-color: dimgrey;
+    margin-left: -1px;
     height: 60px;
-    
+    border-bottom: 1px solid white;
+    background-color: #9ba0a4;
+    margin-top: -15px;
 
     
 }
 
 .side-nav a{
     margin-left:40%;
- padding-top: 10px;
+margin-top: 50%;
 }
 .side-nav img{
     margin-left: 15%;
+}
+
+
+.side-nav .blank{
+   border-bottom: 1px solid #9ba0a4;
+    height: 408px;
+
 }
