@@ -1,12 +1,19 @@
+
 import json
-user_input = raw_input("Enter id")
-data = open("MOCK_DATA.json" "r")
+
+user_input = raw_input("give me a number")
+data= open("MOCK_DATA.json","r")
 
 def check():
-    if isinstance(user_input,int):
-        with data as "x"
+    if isinstance(int(user_input), int):
+        with data as info:
+            temp = json.load(info)
+        for i in temp:
+            if i.get("id") == int(user_input):
+                print i.get("first_name") + "\n" + i.get("last_name")+ "\n" + i.get("email") + "\n" + i.get("gender")
+    else:
+        print "incorrect input"
+check()
 
-            temp_data = json.load("x")
-    for i in temp_data:
-        if i.get(id) == user_input
-
+m_count = 0
+f_count = 0
