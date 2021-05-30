@@ -1,1 +1,1 @@
-# america-s-trusted
+# chichewa news classifier
