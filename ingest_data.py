@@ -12,14 +12,15 @@ def main(params):
     user = params.user
     password = params.password
     host = params.host
-    port = params.host
+    port = params.port
     db = params.db
     table_name = params.table_name
     url = params.url
 
     # check file extension for pandas to open file
 
-    if url.endswith(.csv.gz):
+    
+    if url.endswith(".csv.gz"):
         csv_name = 'output.csv.gz'
 
     else:
