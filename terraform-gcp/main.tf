@@ -47,3 +47,11 @@ resource "google_bigquery_dataset" "dataset" {
   project    = var.project
   location   = var.region
 }
+
+#bigquery table 
+resource "google_bigquery_table" "dataset" {
+  dataset_id =  google_bigquery_dataset.dataset.dataset_id
+  table_id = "rides"
+  project = var.project
+  
+}
