@@ -25,3 +25,9 @@ variable "BQ_DATASET" {
   type = string
   default = "trips_data_all"
 }
+
+variable "BQ_TABLE" {
+  description = "BigQuery Dataset that raw data (from GCS) will be written to"
+  type = string
+  default = "all_rides"
+}
