@@ -1,5 +1,0 @@
-#Deploy
-```bash
-prefect deploment build ./gcp/etl_web_to_gcs.py:etl_parent_flow -n "deploying a parameterized ETL"
-```
-
