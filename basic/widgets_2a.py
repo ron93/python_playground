@@ -1,8 +1,13 @@
+import os
 import sys
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QApplication, QLabel, QMainWindow
+
+basedir = os.path.dirname(__file__)
+print("Current working folder:",os.getcwd())
+print("Paths are relative to:",basedir)
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -11,7 +16,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("My App")
 
         widget = QLabel("Hello")
-        widget.setPixmap(QPixmap("../FymAUvaXwAQrVn7.jpeg"))
+        widget.setPixmap(QPixmap(os.path.join(basedir, "../FymAUvaXwAQrVn7.jpeg")))
         widget.setAlignment(Qt.AlignCenter | Qt.AlignVCenter)
 
 
