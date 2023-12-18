@@ -17,7 +17,9 @@ class MainWindow(QMainWindow):
 
         widget = QLabel("Hello")
         widget.setPixmap(QPixmap(os.path.join(basedir, "../FymAUvaXwAQrVn7.jpeg")))
-        widget.setAlignment(Qt.AlignCenter | Qt.AlignVCenter)
+        # img scale when screen size  is  adjusted
+        widget.setScaledContents(True)
+        # widget.setAlignment(Qt.AlignCenter | Qt.AlignVCenter)
 
 
         self.setCentralWidget(widget)
