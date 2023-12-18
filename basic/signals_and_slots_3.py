@@ -21,14 +21,16 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("My App")
 
         self.button = QPushButton("Press Me!")
+        # signal for button click -> the_button_was_clicked slot
         self.button.clicked.connect(self.the_button_was_clicked)
 
+        # signal for window title change to be sent to the_window_title_changed slot
         self.windowTitleChanged.connect(
             self.the_window_title_changed
         )
 
         self.setCentralWidget(self.button)
-
+    # slot
     def the_button_was_clicked(self):
         print("Clicked!!")
         new_window_title = choice(window_titles)
