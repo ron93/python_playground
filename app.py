@@ -3,6 +3,9 @@ from fastapi import FastAPI, Request
 from fastapi.responses import StreamingResponse, JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from datetime import datetime, timedelta
+import time
+from fastapi.testclient import TestClient
+
 
 # rate limiting
 class RateLimitingMiddleware(BaseHTTPMiddleware):
@@ -68,3 +71,33 @@ async def hello():
 @app.get("/apiv2/info")
 async  def hellov2():
     return {"message": "Hello, World from V2"}
+
+
+# tests
+
+client = TestClient(app)
+def test_modify_request_response_middleware():
+    # send a GET request to the hello endpoint
+    response = client.get("/info")
+    # assert the middleware has ben applied
+    assert response.status_code ==  200
+    # assert the middleware has  been applied
+    assert response.headers.get("X-Custom-Header") == "Modified"
+    # assert the response content
+    assert response.json() == {"message": "Hello, World!"}
+
+def test_rate_limiting_middleware():
+    time.sleep(1)
+    response = client.get("/info")
+
+    # assert the response code is  200
+    assert response.status_code == 200
+
+    time.sleep(1)
+    response = client.get("/info")
+    assert  response.status_code == 200
+
+    time.sleep(1)
+    response = client.get("/info")
+    # assert the response code is  429
+    assert response.status_code == 429
