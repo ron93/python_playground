@@ -7,6 +7,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("My App")
         widget = QLineEdit()
         widget.setMaxLength(10)
+        # input sanitization
+        widget.setInputMask('000.000.000.000;_')
         widget.setPlaceholderText("Enter your text")
         # widget.setReadOnly(True) # uncomment this to make readonly
         widget.returnPressed.connect(self.return_pressed)
@@ -18,7 +20,7 @@ class MainWindow(QMainWindow):
     def return_pressed(self):
         print("Return pressed!")
         self.centralWidget().setText("BOOM!")
-        
+
     def selection_changed(self):
         print("Selection changed")
         print(self.centralWidget().selectedText())
