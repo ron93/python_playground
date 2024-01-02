@@ -1,14 +1,15 @@
 # dialog
-import sys 
+import sys
 from PySide6.QtWidgets import (
-    QApplication, 
-    QMainWindow, 
-    QPushButton, 
+    QApplication,
+    QMainWindow,
+    QPushButton,
     QDialog,
     QDialogButtonBox,
     QVBoxLayout,
-    QLabel
-    )
+    QLabel,
+)
+
 
 # custom dialog
 class CustomDialog(QDialog):
@@ -16,8 +17,29 @@ class CustomDialog(QDialog):
         super().__init__()
 
         self.setWindowTitle("HELLO")
-        buttons = QDialogButtonBox.Ok |QDialogButtonBox.Cancel
-        
+        """butto types
+            QDialogButtonBox.Ok
+            QDialogButtonBox.Open
+            QDialogButtonBox.Save
+            QDialogButtonBox.Cancel
+            QDialogButtonBox.Close
+            QDialogButtonBox.Discard
+            QDialogButtonBox.Apply
+            QDialogButtonBox.Reset
+            QDialogButtonBox.RestoreDefaults
+            QDialogButtonBox.Help
+            QDialogButtonBox.SaveAll
+            QDialogButtonBox.Yes
+            QDialogButtonBox.YesToAll
+            QDialogButtonBox.No
+            QDialogButtonBox.NoToAll
+            QDialogButtonBox.Abort
+            QDialogButtonBox.Retry
+            QDialogButtonBox.Ignore
+            QDialogButtonBox.NoButton
+            """
+        buttons = QDialogButtonBox.Ok | QDialogButtonBox.Cancel
+
         self.buttonBox = QDialogButtonBox(buttons)
         self.buttonBox.accepted.connect(self.accept)
         self.buttonBox.rejected.connect(self.reject)
@@ -27,6 +49,7 @@ class CustomDialog(QDialog):
         self.layout.addWidget(message)
         self.layout.addWidget(self.buttonBox)
         self.setLayout(self.layout)
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -38,7 +61,7 @@ class MainWindow(QMainWindow):
         button.clicked.connect(self.button_clicked)
         self.setCentralWidget(button)
 
-    def  button_clicked(self, s):
+    def button_clicked(self, s):
         print("Click", s)
         # using built-in dialog
         # dlg = QDialog(self)
@@ -50,9 +73,10 @@ class MainWindow(QMainWindow):
         # create new event loop
         dlg.exec()
 
+
 app = QApplication(sys.argv)
 
-window  = MainWindow()
+window = MainWindow()
 window.show()
 
 app.exec()
