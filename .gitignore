@@ -7,7 +7,7 @@
 /pysideuic
 
 # icons
-/icons
+icons/
 # Auto-generated snippets
 sources/pyside6/doc/codesnippets/*
 
