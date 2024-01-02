@@ -99,5 +99,5 @@ def test_rate_limiting_middleware():
 
     time.sleep(1)
     response = client.get("/info")
-    # assert the response code is  429
+    # assert the response code is  429 after request limit is  reached
     assert response.status_code == 429
