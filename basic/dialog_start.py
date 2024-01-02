@@ -13,8 +13,8 @@ from PySide6.QtWidgets import (
 
 # custom dialog
 class CustomDialog(QDialog):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent=None):
+        super().__init__(parent)
 
         self.setWindowTitle("HELLO")
         """butto types
@@ -70,6 +70,7 @@ class MainWindow(QMainWindow):
         dlg = CustomDialog()
 
         dlg.setWindowTitle("?")
+
         # create new event loop
         if dlg.exec():
             print("Sucess!!")
