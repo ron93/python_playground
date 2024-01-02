@@ -71,7 +71,12 @@ class MainWindow(QMainWindow):
 
         dlg.setWindowTitle("?")
         # create new event loop
-        dlg.exec()
+        if dlg.exec():
+            print("Sucess!!")
+        else:
+            print("Cancel!")
+
+
 
 
 app = QApplication(sys.argv)
