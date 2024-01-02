@@ -6,6 +6,8 @@
 /SciTE.*
 /pysideuic
 
+# icons
+/icons
 # Auto-generated snippets
 sources/pyside6/doc/codesnippets/*
 
