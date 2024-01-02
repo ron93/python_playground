@@ -47,6 +47,7 @@ class MainWindow(QMainWindow):
         dlg = CustomDialog()
 
         dlg.setWindowTitle("?")
+        # create new event loop
         dlg.exec()
 
 app = QApplication(sys.argv)
