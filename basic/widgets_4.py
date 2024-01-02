@@ -11,7 +11,7 @@ class MainWindow(QMainWindow):
 
         widget = QComboBox()
         widget.addItems(["one", "two", "three"])
-
+        widget.setEditable(True)
         widget.currentIndexChanged.connect(self.index_changed)
         widget.currentTextChanged.connect(self.text_changed)
 

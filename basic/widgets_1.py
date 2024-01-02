@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
         widget.setFont(font)
         # flags for horizontal alighnement : Qt.AlignLeft, Qt.AlignRight, Qt.AlignHCenter, Qt.AlignJustify
         # flags for vertical alignment : Qt.AlignTop, Qt.AlignBottom, Qt.AlignVCenter
-        # flag for alignment in both directions : Qt.AlignCenter
+        # flag for alignment in both directions : Qt.AlignCenter``
         # combining flags i.e horizontal_alignment | vertical_alignment
         widget.setAlignment(Qt.AlignCenter | Qt.AlignVCenter)
 

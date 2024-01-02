@@ -14,7 +14,9 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("My App")
         self.label = QLabel()
+
         self.input = QLineEdit()
+        # textChanged -> signal. label -> slot to setText from input
         self.input.textChanged.connect(self.label.setText)
 
         layout = QVBoxLayout()

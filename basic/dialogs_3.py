@@ -60,6 +60,7 @@ class MainWindow(QMainWindow):
                 QMessageBox.Critical
         """
         dlg.setIcon(QMessageBox.Question)
+        
         button = dlg.exec()
 
         if button == QMessageBox.Yes:
