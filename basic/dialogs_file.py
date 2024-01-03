@@ -72,8 +72,29 @@ class MainWindow(QMainWindow):
                 file_contents = f.read()
                 print(file_contents)
 
+    # Open multiple files
     def get_filenames(self):
-        pass
+        caption = "" 
+        initial_dir = ""
+        initial_filter =  FILE_FILTERS[1] # from list
+        filters = ";;".join(FILE_FILTERS)
+        print("Filters are: ", filters)
+        print("Initial filter: ", initial_filter)
+
+        filenames, selected_filter = QFileDialog.getOpenFileNames(
+            self,
+            caption=caption,
+            # directory = initial_dir,
+            filter=filters,
+            # initialFilter=initial_filter
+        )
+        print("Result:", filenames, selected_filter)
+        
+        if filenames:
+            for filename  in filenames:
+                with open(filename, "r") as f:
+                    file_contents = f.read()
+                    print(file_contents)
     
     def get_save_filename(self):
         pass
