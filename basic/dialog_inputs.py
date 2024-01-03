@@ -6,6 +6,7 @@ from PySide6.QtWidgets import (
     QPushButton,
     QVBoxLayout,
     QWidget,
+    QLineEdit
 )
 
 class MainWindow(QMainWindow):
@@ -89,7 +90,14 @@ class MainWindow(QMainWindow):
         print("Result:", ok, my_selected_str)
     
     def get_a_str(self):
-        pass
+        title = "Enter a string"
+        label = "Type your password"
+        text = "my secret password"
+        mode = QLineEdit.Password
+        my_selected_str, ok = QInputDialog.getText(
+            self, title, label, mode, text
+        )
+        print("Result:", ok, my_selected_str)
     
     def  get_text(self):
         pass
