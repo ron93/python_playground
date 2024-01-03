@@ -4,13 +4,17 @@ from  PySide6.QtWidgets import (
     QApplication,
     QFileDialog,
     QMainWindow,
-    QPushButton
+    QPushButton,
+    QVBoxLayout,
+    QWidget
+
 )
 # file filter
 FILE_FILTERS = [
         "Portable Network Graphics File (*.png)",
         "Text files (*.txt)",
         "Comma Separated Values (*.csv)",
+        "PDF (*.pdf)",
         "All files (*.*)",
         ]
 
@@ -20,26 +24,62 @@ class MainWindow(QMainWindow):
 
         self.setWindowTitle("My App")
 
+        layout = QVBoxLayout()
+
         button1  = QPushButton("Open file")
         button1.clicked.connect(self.get_filename)
+        layout.addWidget(button1)
 
-        self.setCentralWidget(button1)
+        button2 = QPushButton("Open files")
+        button2.clicked.connect(self.get_filenames)
+        layout.addWidget(button2)
+
+        button3 = QPushButton("Save file")
+        button3.clicked.connect(self.get_save_filename)
+        layout.addWidget(button3)
+
+        button4 = QPushButton("Select Folder")
+        button4.clicked.connect(self.get_folder)
+        layout.addWidget(button4)
+
+
+        container = QWidget()
+        container.setLayout(layout)
+        self.setCentralWidget(container)
 
     def get_filename(self):
-        
-        initial_filter = FILE_FILTERS[2] #*.csv
+        caption = ""
+        initial_dir = ""
+        initial_filter = FILE_FILTERS[2] #filter from FILE_FILTER list
         filters = ';;'.join(FILE_FILTERS)
         print("Filter are:", filters)
         print("Initial filter are:", initial_filter)
 
         filename, selected_filter = QFileDialog.getOpenFileName(
             self,
+            caption=caption,
+            #TODO fix directory error : AttributeError: PySide6.QtWidgets.QFileDialog.getOpenFileName(): unsupported keyword 'directory'
+            # directory=initial_dir,
             filter=filters,
             # TODO fix initial value error :AttributeError: PySide6.QtWidgets.QFileDialog.getOpenFileName(): unsupported keyword 'initialFilter'
             # initialFilter = initial_filter
             )
         
         print("Result:", filename, selected_filter)
+        # TODO file content read errors on PDF :UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe2 in position 10: invalid continuation byte
+        if filename:
+            with open(filename, "r")  as f:
+                file_contents = f.read()
+                print(file_contents)
+
+    def get_filenames(self):
+        pass
+    
+    def get_save_filename(self):
+        pass
+
+    def get_folder(self):
+        pass
 
 app = QApplication(sys.argv)
 
