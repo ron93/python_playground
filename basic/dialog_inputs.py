@@ -69,8 +69,24 @@ class MainWindow(QMainWindow):
             decimals=2,
         )
         print("Result:", ok, my_float_value)
+
     def get_a_str_from_list(self):
-        pass
+        title = "Select a string"
+        label = "Select a fruit from a list"
+        items = ["apple", "pear", "orange", "grape"]
+
+        initial_selection = 2 # orange from 0 index
+
+        my_selected_str, ok = QInputDialog.getItem(
+            self,
+            title,
+            label,
+            items,
+            current=initial_selection,
+            # oprion to make dialog editable i.e add aitems
+            editable=True
+        )
+        print("Result:", ok, my_selected_str)
     
     def get_a_str(self):
         pass
