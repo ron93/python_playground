@@ -100,7 +100,13 @@ class MainWindow(QMainWindow):
         print("Result:", ok, my_selected_str)
     
     def  get_text(self):
-        pass
+        title = "Enter text"
+        label = "Type your novel here"
+        text = "Once upon a time..."
+        my_selected_str, ok = QInputDialog.getMultiLineText(
+            self, title, label, text
+        )
+        print("Result:", ok, my_selected_str)
 
 app = QApplication(sys.argv)
 
