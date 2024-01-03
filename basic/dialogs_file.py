@@ -1,4 +1,5 @@
 import sys
+import os
 
 from  PySide6.QtWidgets import (
     QApplication,
@@ -6,7 +7,8 @@ from  PySide6.QtWidgets import (
     QMainWindow,
     QPushButton,
     QVBoxLayout,
-    QWidget
+    QWidget,
+    QMessageBox
 
 )
 # file filter
@@ -89,7 +91,7 @@ class MainWindow(QMainWindow):
             # initialFilter=initial_filter
         )
         print("Result:", filenames, selected_filter)
-        
+
         if filenames:
             for filename  in filenames:
                 with open(filename, "r") as f:
@@ -97,7 +99,39 @@ class MainWindow(QMainWindow):
                     print(file_contents)
     
     def get_save_filename(self):
-        pass
+        caption = ""
+        initial_dir = ""
+        initial_filter = FILE_FILTERS[3]
+        filters = ";;".join(FILE_FILTERS)
+
+        print("Filters are:", filters)
+        print("Initial filters:", initial_filter)
+
+        filename, selected_filter = QFileDialog.getSaveFileName(
+            self,
+            caption=caption,
+            # directory=initial_dir,
+            filter=filters,
+            # initialFilter=initial_filter,
+        )
+
+        print("Result:", filename, selected_filter)
+        
+        # check file exists
+        if filename:
+            if os.path.exists(filename):
+                write_confirned = QMessageBox(
+                    self,
+                    "Overwrite file?",
+                    f"The file  {filename} exists. Are you sure you want to overwrite it?"
+                )
+            else:
+                # file exists. Always conformed
+                write_confirned = True
+                if  write_confirned:
+                    with open(filename, "w") as f:
+                        file_content = "YOUR FILE CONTENT"
+                        f.write(file_content)
 
     def get_folder(self):
         pass
