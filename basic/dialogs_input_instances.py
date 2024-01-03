@@ -55,7 +55,16 @@ class MainWindow(QMainWindow):
         print("Result:", ok, dialog.intValue())
     
     def get_a_float(self):
-        pass
+        dialog = QInputDialog(self)
+        dialog.setWindowTitle("Enter a float")
+        dialog.setLabelText("Type your float here")
+        dialog.setDoubleValue(0.0)
+        dialog.setDoubleMinimum(-5.3)
+        dialog.setDoubleMaximum(5.4)
+        dialog.setDoubleDecimals(2)
+
+        ok = dialog.exec()
+        print("Result:", ok, dialog.doubleValue())
 
     def get_a_str_from_list(self):
         pass
