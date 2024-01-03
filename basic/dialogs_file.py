@@ -134,7 +134,8 @@ class MainWindow(QMainWindow):
                         f.write(file_content)
 
     def get_folder(self):
-        pass
+        folder_path = QFileDialog.getExistingDirectory(self)
+        print("Result:", folder_path)
 
 app = QApplication(sys.argv)
 
