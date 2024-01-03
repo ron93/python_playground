@@ -6,6 +6,13 @@ from  PySide6.QtWidgets import (
     QMainWindow,
     QPushButton
 )
+# file filter
+FILE_FILTERS = [
+        "Portable Network Graphics File (*.png)",
+        "Text files (*.txt)",
+        "Comma Separated Values (*.csv)",
+        "All files (*.*)",
+        ]
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -19,19 +26,18 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(button1)
 
     def get_filename(self):
-        # file filter
-        FILE_FILTERS = [
-            "Portable Network Graphics File (*.png)",
-            "Text files (*.txt)",
-            "Comma Separated Values (*.csv)",
-            "All files (*.*)",
-        ]
+        
         initial_filter = FILE_FILTERS[2] #*.csv
         filters = ';;'.join(FILE_FILTERS)
         print("Filter are:", filters)
+        print("Initial filter are:", initial_filter)
+
         filename, selected_filter = QFileDialog.getOpenFileName(
             self,
-            filter=filters)
+            filter=filters,
+            # TODO fix initial value error :AttributeError: PySide6.QtWidgets.QFileDialog.getOpenFileName(): unsupported keyword 'initialFilter'
+            # initialFilter = initial_filter
+            )
         
         print("Result:", filename, selected_filter)
 
