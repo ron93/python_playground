@@ -79,10 +79,26 @@ class MainWindow(QMainWindow):
         print("Result:", ok, dialog.textValue())
 
     def get_str(self):
-        pass
+        dialog = QInputDialog(self)
+        dialog.setWindowTitle("Enter a string")
+        dialog.setLabelText("Type your string here")
+        dialog.setTextValue("My secret password")
+        # TODO: fix input mode for password
+        # dialog.setInputMode(QLineEdit.Password)
+
+        ok = dialog.exec()
+
+        print("Result:",ok ,dialog.textValue())
 
     def get_text(self):
-        pass
+        dialog = QInputDialog(self)
+        dialog.setWindowTitle("Enter a text")
+        dialog.setLabelText("Type your text here")
+        dialog.setTextValue("Once upon a time ...")
+
+        ok = dialog.exec()
+
+        print("Result:", ok, dialog.textValue())
 
 app = QApplication(sys.argv)
 
