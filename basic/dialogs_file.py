@@ -20,7 +20,14 @@ class MainWindow(QMainWindow):
 
     def get_filename(self):
         # file filter
-        filters = "Portable Network Graphics files (*.png);;Comma Separated Values (*.csv);;All Files (*)"
+        FILE_FILTERS = [
+            "Portable Network Graphics File (*.png)",
+            "Text files (*.txt)",
+            "Comma Separated Values (*.csv)",
+            "All files (*.*)",
+        ]
+        initial_filter = FILE_FILTERS[2] #*.csv
+        filters = ';;'.join(FILE_FILTERS)
         print("Filter are:", filters)
         filename, selected_filter = QFileDialog.getOpenFileName(
             self,
