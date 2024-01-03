@@ -19,7 +19,13 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(button1)
 
     def get_filename(self):
-        filename, selected_filter = QFileDialog.getOpenFileName(self)
+        # file filter
+        filters = "Portable Network Graphics files (*.png);;Comma Separated Values (*.csv);;All Files (*)"
+        print("Filter are:", filters)
+        filename, selected_filter = QFileDialog.getOpenFileName(
+            self,
+            filter=filters)
+        
         print("Result:", filename, selected_filter)
 
 app = QApplication(sys.argv)
