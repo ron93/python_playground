@@ -40,9 +40,19 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(container)
 
     def get_an_int(self):
+        title = "Get an interger"
+        label = "Enter a number"
+
         my_int_value, ok = QInputDialog.getInt(
-            self, "Get an interger", "Enter a number"
+            self,
+            title, 
+            label,
+            value=0,
+            minValue=-5,
+            maxValue=5,
+            step=1,
         )
+
         print("Result:", ok, my_int_value)
 
     def get_a_float(self):
