@@ -7,7 +7,8 @@ from PySide6.QtWidgets import (
     QMainWindow,
     QPushButton,
     QVBoxLayout,
-    QWidget
+    QWidget,
+    QComboBox
 )
 
 class MainWindow(QMainWindow):
@@ -67,7 +68,15 @@ class MainWindow(QMainWindow):
         print("Result:", ok, dialog.doubleValue())
 
     def get_a_str_from_list(self):
-        pass
+        dialog = QInputDialog(self)
+        dialog.setWindowTitle("select a string")
+        dialog.setLabelText("select a fruit from a list")
+        dialog.setComboBoxItems(["apple", "pear", "orange", "grape"])
+        dialog.setTextValue("apple")
+
+        ok = dialog.exec()
+
+        print("Result:", ok, dialog.textValue())
 
     def get_str(self):
         pass
