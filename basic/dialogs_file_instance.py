@@ -66,7 +66,26 @@ class MainWindow(QMainWindow):
         )
 
     def get_filenames(self):
-        pass
+        # TODO not getting multiple files
+        caption = "Open files"
+        initial_dir = ""
+        initial_filter= FILE_FILTERS[3]
+        
+        # QFileDialog instance 
+        dialog = QFileDialog()
+        dialog.setWindowTitle(caption)
+        dialog.setDirectory(initial_dir)
+        dialog.setNameFilters(FILE_FILTERS)
+        dialog.selectNameFilter(initial_filter)
+        dialog.setFileMode(QFileDialog.ExistingFile)
+
+        ok = dialog.exec()
+        print(
+            "Result:",
+            ok,
+            dialog.selectedFiles(),
+            dialog.selectedNameFilter()
+            )
 
     def get_save_filename(self):
         pass
