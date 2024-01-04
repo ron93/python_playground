@@ -32,7 +32,9 @@ class MainWindow(QMainWindow):
         self.w = AnotherWindow()
 
         self.button = QPushButton("Push for Window")
-        self.button.clicked.connect(self.show_new_window)
+        # self.button.clicked.connect(self.show_new_window)
+        self.button.clicked.connect(self.toggle_window)
+
         self.setCentralWidget(self.button)
 
     # def show_new_window_old(self,checked):
@@ -45,9 +47,16 @@ class MainWindow(QMainWindow):
         # else:
         #     self.w.close()
         #     self.w = None # discard reference, close window
-    def show_new_window(self,checked):
+    
+    # def show_new_window(self,checked):
+    #     self.w.show()
 
-        self.w.show()
+    def toggle_window(self, checked):
+        if self.w.isVisible():
+            self.w.hide()
+        else:
+            self.w.show()
+
 app = QApplication(sys.argv)
 w = MainWindow()
 w.show()
