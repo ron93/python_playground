@@ -60,11 +60,9 @@ class MainWindow(QMainWindow):
         filename, selected_filter = QFileDialog.getOpenFileName(
             self,
             caption=caption,
-            #TODO fix directory error : AttributeError: PySide6.QtWidgets.QFileDialog.getOpenFileName(): unsupported keyword 'directory'
-            # directory=initial_dir,
+            dir = initial_dir,
             filter=filters,
-            # TODO fix initial value error :AttributeError: PySide6.QtWidgets.QFileDialog.getOpenFileName(): unsupported keyword 'initialFilter'
-            # initialFilter = initial_filter
+            selectedFilter=initial_filter
             )
         
         print("Result:", filename, selected_filter)
@@ -86,9 +84,9 @@ class MainWindow(QMainWindow):
         filenames, selected_filter = QFileDialog.getOpenFileNames(
             self,
             caption=caption,
-            # directory = initial_dir,
+            dir = initial_dir,
             filter=filters,
-            # initialFilter=initial_filter
+            selectedFilter=initial_filter
         )
         print("Result:", filenames, selected_filter)
 
@@ -110,9 +108,9 @@ class MainWindow(QMainWindow):
         filename, selected_filter = QFileDialog.getSaveFileName(
             self,
             caption=caption,
-            # directory=initial_dir,
+            dir = initial_dir,
             filter=filters,
-            # initialFilter=initial_filter,
+            selectedFilter=initial_filter
         )
 
         print("Result:", filename, selected_filter)
