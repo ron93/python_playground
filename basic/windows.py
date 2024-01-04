@@ -37,6 +37,11 @@ class MainWindow(QMainWindow):
             # runs if another window 'w' doesn't exist
             self.w = AnotherWindow()
             self.w.show()
+            
+        # close window
+        else:
+            self.w.close()
+            self.w = None # discard reference, close window
 
 app = QApplication(sys.argv)
 w = MainWindow()
