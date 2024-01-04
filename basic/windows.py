@@ -26,23 +26,28 @@ class AnotherWindow(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.w = None # no external window  created
+        # self.w = None # no external window  created -- used with show_new_window_old function
+
+        # creates new window only once
+        self.w = AnotherWindow()
 
         self.button = QPushButton("Push for Window")
         self.button.clicked.connect(self.show_new_window)
         self.setCentralWidget(self.button)
 
-    def show_new_window(self,checked):
-        if self.w is None:
-            # runs if another window 'w' doesn't exist
-            self.w = AnotherWindow()
-            self.w.show()
-            
-        # close window
-        else:
-            self.w.close()
-            self.w = None # discard reference, close window
+    # def show_new_window_old(self,checked):
+        # if self.w is None:
+        #     # runs if another window 'w' doesn't exist
+        #     self.w = AnotherWindow()
+        #     self.w.show()
 
+        # # close window
+        # else:
+        #     self.w.close()
+        #     self.w = None # discard reference, close window
+    def show_new_window(self,checked):
+
+        self.w.show()
 app = QApplication(sys.argv)
 w = MainWindow()
 w.show()
