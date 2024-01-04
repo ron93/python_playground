@@ -17,13 +17,26 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.label)
         self.setMouseTracking(True)
 
-    # context menu event
-    def contextMenuEvent(self, e):
+        # signal based approach to creating context menus
+        self.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.customContextMenuRequested.connect(self.on_context_menu)
+
+    # context menu event 
+    # note: uncomment to use contextMenuEvent handler in place of signal based handling "on_context_menu"
+    # def contextMenuEvent(self, e):
+    #     context = QMenu(self)
+    #     context.addAction(QAction("test 1", self))
+    #     context.addAction(QAction("test 2", self))
+    #     context.addAction(QAction("test 3", self))
+    #     context.exec(e.globalPos())
+
+    # context menu slot
+    def on_context_menu(self, pos):
         context = QMenu(self)
         context.addAction(QAction("test 1", self))
         context.addAction(QAction("test 2", self))
         context.addAction(QAction("test 3", self))
-        context.exec(e.globalPos())
+        context.exec(self.mapToGlobal(pos))
 
     
     """
