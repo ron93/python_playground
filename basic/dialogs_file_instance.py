@@ -37,7 +37,7 @@ class MainWindow(QMainWindow):
         button3.clicked.connect(self.get_save_filename)
         layout.addWidget(button3)
 
-        button4 = QPushButton("Select file")
+        button4 = QPushButton("Select folder")
         button4.clicked.connect(self.get_folder)
         layout.addWidget(button4)
 
@@ -108,7 +108,25 @@ class MainWindow(QMainWindow):
             )
 
     def get_folder(self):
-        pass
+        caption = "Select folder"
+        initial_dir = ""
+        initial_filter= FILE_FILTERS[3]
+
+        dialog = QFileDialog()
+        dialog.setWindowTitle(caption)
+        dialog.setDirectory(initial_dir)
+        dialog.setNameFilters(FILE_FILTERS)
+        dialog.selectNameFilter(initial_filter)
+        dialog.setFileMode(QFileDialog.FileMode.Directory)
+
+        ok = dialog.exec()
+        print(
+            "Result:",
+            ok,
+            dialog.selectedFiles(),
+            dialog.selectedNameFilter()
+            )
+
 
 app = QApplication(sys.argv)
 
