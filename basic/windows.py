@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (
     QPushButton,
     QVBoxLayout,
     QWidget,
+    QLineEdit,
 )
 
 class AnotherWindow(QWidget):
@@ -35,7 +36,17 @@ class MainWindow(QMainWindow):
         # self.button.clicked.connect(self.show_new_window)
         self.button.clicked.connect(self.toggle_window)
 
-        self.setCentralWidget(self.button)
+        self.input = QLineEdit()
+        self.input.textChanged.connect(self.w.label.setText)
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.button)
+        layout.addWidget(self.input)
+        container = QWidget()
+        container.setLayout(layout)
+
+
+        self.setCentralWidget(container)
 
     # def show_new_window_old(self,checked):
         # if self.w is None:
