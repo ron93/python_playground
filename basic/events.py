@@ -1,12 +1,13 @@
 import sys
  
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QMouseEvent
+from PySide6.QtGui import QMouseEvent, QAction
 from PySide6.QtWidgets import (
     QApplication,
     QLabel,
     QMainWindow,
-    QTextEdit
+    QTextEdit,
+    QMenu
 )
 
 class MainWindow(QMainWindow):
@@ -16,7 +17,33 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.label)
         self.setMouseTracking(True)
 
+    # context menu event
+    def contextMenuEvent(self, e):
+        context = QMenu(self)
+        context.addAction(QAction("test 1", self))
+        context.addAction(QAction("test 2", self))
+        context.addAction(QAction("test 3", self))
+        context.exec(e.globalPos())
+
     
+    """
+    mouse events:
+        .button() - specific button that trigger event
+        .buttons() - state of all mouse buttons 
+        .globalPos() - application-global position
+        .globalX() - application-global horizontal position
+        .globalY() - application-global vertical Y position
+        .pos() - widget-relative position as QPoint integer
+        .posF() - widget-relative position as QPointF float
+    """
+
+    """
+    mouse butto identifiers:
+        Qt.NoButton - no button pressed , or event not related to button press
+        Qt.LeftButton - left button pressed 
+        Qt.RightButton - right button pressed
+        Qt.MiddleButton - middle button pressed
+    """
     def mouseMoveEvent(self, e):
         self.label.setText("mouseMoveEvent")
 
