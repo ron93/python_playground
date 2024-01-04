@@ -88,7 +88,24 @@ class MainWindow(QMainWindow):
             )
 
     def get_save_filename(self):
-        pass
+        caption = "Save As"
+        initial_dir = ""
+        initial_filter= FILE_FILTERS[3]
+
+        dialog = QFileDialog()
+        dialog.setWindowTitle(caption)
+        dialog.setDirectory(initial_dir)
+        dialog.setNameFilters(FILE_FILTERS)
+        dialog.selectNameFilter(initial_filter)
+        dialog.setFileMode(QFileDialog.FileMode.AnyFile)
+
+        ok = dialog.exec()
+        print(
+            "Result:",
+            ok,
+            dialog.selectedFiles(),
+            dialog.selectedNameFilter()
+            )
 
     def get_folder(self):
         pass
