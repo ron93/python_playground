@@ -34,6 +34,7 @@ class MainWindow(QMainWindow):
 
     def show_new_window(self,checked):
         if self.w is None:
+            # runs if another window 'w' doesn't exist
             self.w = AnotherWindow()
             self.w.show()
 
