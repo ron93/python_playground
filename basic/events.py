@@ -78,9 +78,11 @@ class MainWindow(QMainWindow):
             self.label.setText("mousePressEvent RIGHT")
 
         
-    # calling super to pass event to the normal handler 
+    # calling super to pass event to the normal handler i.e event handles as default intension with option to  add custom behavior e.g print
+    # this function will continue with normal behavior with added non-interfering behavior i.e print
     # def mousePressEvent(self, e) -> None:
-    #     return super().mousePressEvent(e)
+        # print("Mouse pressed")
+        # return super().mousePressEvent(e)
         
     def mouseReleaseEvent(self, e):
         # self.label.setText("mouseReleaseEvent")
