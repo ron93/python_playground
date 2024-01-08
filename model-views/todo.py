@@ -81,8 +81,22 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             # clear the selection (as it is no longer valid)
             self.todoView.clearSelection()
 
+    # tag::complete[]
+    # TODO: fix clear selection - item still in list status change
     def complete(self):
-        pass
+        indexes = self.todoView.selectedIndexes()
+        if indexes:
+            index = indexes[0]
+            row = index.row()
+            status, text = self.model.todos[row]
+            self.model.todos[row] = (True, text)
+            # .dataChanged takes top-left and bottom right, which are equal
+            # for a single selection.
+            self.model.dataChanged.emit(index, index)
+            # Clear the selection (as it is no longer valid).
+            self.todoView.clearSelection()
+            # end::complete[]
+
 
 app = QtWidgets.QApplication(sys.argv)
 window = MainWindow()
