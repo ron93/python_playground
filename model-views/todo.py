@@ -1,13 +1,19 @@
 import sys
+import os
 
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import Qt, QAbstractListModel
+from PySide6.QtGui import QImage,QColor
 
 from MainWindow import Ui_MainWindow
 
+
+basedir = os.path.dirname(__file__)
+tick = QImage(os.path.join(basedir, "../icon-file/icons/tick.png"))
+
 class TodoModel(QAbstractListModel):
-    def __init__(self, todos=None):
-        super().__init__()
+    def __init__(self, *args, todos=None, **kwargs):
+        super(TodoModel, self).__init__(*args, **kwargs)
         self.todos = todos or []
         
     def data(self, index, role):
@@ -37,7 +43,13 @@ class TodoModel(QAbstractListModel):
         if role == Qt.DisplayRole:
             status, text = self.todos[index.row()]
             return text
-    
+        
+        if role == Qt.DecorationRole:
+            status, text = self.todos[index.row()]
+            if  status:
+                return tick
+                # return QColor("green")   
+            
     def rowCount(self, index):
         return len(self.todos)
 
@@ -82,7 +94,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.todoView.clearSelection()
 
     # tag::complete[]
-    # TODO: fix clear selection - item still in list status change
     def complete(self):
         indexes = self.todoView.selectedIndexes()
         if indexes:
