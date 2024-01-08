@@ -50,6 +50,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.todoView.setModel(self.model)
         # connect the button
         self.addButton.pressed.connect(self.add)
+        self.deleteButton.pressed.connect(self.delete)
+        self.completeButton.pressed.connect(self.complete)
+
 
     def add(self):
         """
@@ -64,7 +67,22 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             # trigger refresh
             self.model.layoutChanged.emit()
             # empty the  input
-            self.todoEdit("")
+            self.todoEdit.setText("")
+
+
+    def delete(self):
+        indexes = self.todoView.selectedIndexes()
+        if indexes:
+            # indexes is a single-item list in single-select mode.
+            index = indexes[0]
+            # remove item  and refresh
+            del self.model.todos[index.row()]
+            self.model.layoutChanged.emit()
+            # clear the selection (as it is no longer valid)
+            self.todoView.clearSelection()
+
+    def complete(self):
+        pass
 
 app = QtWidgets.QApplication(sys.argv)
 window = MainWindow()
