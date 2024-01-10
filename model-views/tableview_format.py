@@ -13,6 +13,8 @@ class tableModel(QtCore.QAbstractTableModel):
         self._data = data
 
     def data(self, index, role):
+        if role == Qt.BackgroundRole and index.column() ==2:
+            return QtGui.QColor(Qt.blue)
         if role == Qt.DisplayRole:
             # get raw value
             value = self._data[index.row()][index.column()]
@@ -32,6 +34,20 @@ class tableModel(QtCore.QAbstractTableModel):
             
             # default (anything not captured above: eg int)
             return value
+        
+        if role == Qt.TextAlignmentRole:
+            value = self._data[index.row()][index.column()]
+            if isinstance(value, int) or isinstance(value, float):
+                # align  right, vertical middle.
+                return Qt.AlignVCenter | Qt.AlignRight
+        
+        if role == Qt.ForegroundRole:
+            value = self._data[index.row()][index.column()]
+            if (
+                isinstance(value, int) or isinstance(value, float)
+            ) and value < 0:
+                return QtGui.QColor("red")
+    
         
     def rowCount(self, index) :
         return len(self._data)
