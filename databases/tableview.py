@@ -17,10 +17,11 @@ class MainWindow(QMainWindow):
 
         self.model = QSqlTableModel(db=db)
         self.table.setModel(self.model)
-
         self.model.setTable("Track")
+        # index to sort by
+        idx = self.model.fieldIndex("Milliseconds")
         # sort column index and Qt.AscendingOrder or Qt.DescendingOrder
-        self.model.setSort(2, Qt.DescendingOrder)
+        self.model.setSort(idx, Qt.DescendingOrder)
         self.model.select()
         """
         editing strategy:
