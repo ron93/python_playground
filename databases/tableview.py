@@ -19,14 +19,27 @@ class MainWindow(QMainWindow):
         self.table.setModel(self.model)
 
         self.model.setTable("Track")
-        # set data  header
+
+        """# set data  header manually :
         self.model.setHeaderData(1, Qt.Horizontal, "Name")
         self.model.setHeaderData(2, Qt.Horizontal, "Album (ID)")
         self.model.setHeaderData(3, Qt.Horizontal, "Media Type (ID)")
         self.model.setHeaderData(4,Qt.Horizontal, "Genre (ID)")
         self.model.setHeaderData(5, Qt.Horizontal, "Composer")
+        """
+        # dynamic titles
+        column_titles = {
+            "Name": "Name",
+            "AlbumId": "Album (ID)",
+            "MediaTypeId": "Media Type (ID)",
+            "GenreId":"Genre (ID)",
+            "Composer": "Composer",
+        }
+        for n, t in column_titles.items():
+            idx = self.model.fieldIndex(n)
+            self.model.setHeaderData(idx, Qt.Horizontal,  t)
+        
         self.model.select()
-
 
         # index to sort by
         idx = self.model.fieldIndex("Milliseconds")
