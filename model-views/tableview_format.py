@@ -1,9 +1,16 @@
 import sys
+import os 
+
 from datetime import datetime
 from typing import Union
 
 from PySide6 import QtCore,QtGui,QtWidgets
 from PySide6.QtCore import QModelIndex, QPersistentModelIndex, Qt
+
+COLORS = ['#053061', '#2166ac', '#4393c3', '#92c5de', '#d1e5f0',
+'#f7f7f7', '#fddbc7', '#f4a582', '#d6604d', '#b2182b', '#67001f']
+
+base_dir = os.path.dirname(__file__)
 
 class tableModel(QtCore.QAbstractTableModel):
     def __init__(self, data):
@@ -13,8 +20,8 @@ class tableModel(QtCore.QAbstractTableModel):
         self._data = data
 
     def data(self, index, role):
-        if role == Qt.BackgroundRole and index.column() ==2:
-            return QtGui.QColor(Qt.blue)
+        # if role == Qt.BackgroundRole and index.column() ==2:
+        #     return QtGui.QColor(Qt.blue)
         if role == Qt.DisplayRole:
             # get raw value
             value = self._data[index.row()][index.column()]
@@ -41,12 +48,36 @@ class tableModel(QtCore.QAbstractTableModel):
                 # align  right, vertical middle.
                 return Qt.AlignVCenter | Qt.AlignRight
         
-        if role == Qt.ForegroundRole:
+        # if role == Qt.ForegroundRole:
+        #     value = self._data[index.row()][index.column()]
+        #     if (
+        #         isinstance(value, int) or isinstance(value, float)
+        #     ) and value < 0:
+        #         return QtGui.QColor("red")
+        
+        # if role ==  Qt.BackgroundRole:
+        #     value = self._data[index.row()][index.column()]
+        #     if isinstance(value, int) or isinstance(value, float):
+        #         value = int(value) # convert to integer for index.
+
+        #         # Limit to range -5 ... +5, convert to 0..10
+        #         value = max(-5, value) # values less than < -5 become -5
+        #         value = min(5, value) # values > +5 become +5
+        #         value = value + 5 # -5 becomes 0, +5 becomes +10
+
+        #         return QtGui.QColor(COLORS[value])
+
+        if role == Qt.DecorationRole:
             value = self._data[index.row()][index.column()]
-            if (
-                isinstance(value, int) or isinstance(value, float)
-            ) and value < 0:
-                return QtGui.QColor("red")
+            if isinstance(value, datetime):
+                return QtGui.QIcon(
+                    os.path.join(base_dir, "../icon-file/icons/calendar.png")
+                )
+            
+            if isinstance(value, bool):
+                if value:
+                    return QtGui.QIcon("../icon-file/icons/tick.png")
+                return QtGui.QIcon("../icon-file/icons/cross.png")
     
         
     def rowCount(self, index) :
@@ -60,12 +91,13 @@ class MainWindow(QtWidgets.QMainWindow):
         super().__init__()
         self.table = QtWidgets.QTableView()
         data = [
-                [4, 9, 2],
-                [1, -1, 'hello'],
-                [3.023, 5, -5],
-                [3, 3, datetime(2017,10,1)],
-                [7.555, 8, 9],
+                [True, 9, 2],
+                [1, 0, -1],
+                [3, 5, False],
+                [3, 3, 2],
+                [datetime(2019, 5, 4), 8, 9],
                 ]
+        
         self.model = tableModel(data)
         self.table.setModel(self.model)
         self.setCentralWidget(self.table)
