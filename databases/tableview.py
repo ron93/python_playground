@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
         self.model.setHeaderData(4,Qt.Horizontal, "Genre (ID)")
         self.model.setHeaderData(5, Qt.Horizontal, "Composer")
         """
-        # dynamic titles
+        # name for  titles
         column_titles = {
             "Name": "Name",
             "AlbumId": "Album (ID)",
@@ -35,6 +35,7 @@ class MainWindow(QMainWindow):
             "GenreId":"Genre (ID)",
             "Composer": "Composer",
         }
+        # title look-up and setting header
         for n, t in column_titles.items():
             idx = self.model.fieldIndex(n)
             self.model.setHeaderData(idx, Qt.Horizontal,  t)
