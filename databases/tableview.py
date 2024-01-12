@@ -20,6 +20,7 @@ class MainWindow(QMainWindow):
 
         self.model.setTable("Track")
         self.model.select()
+        self.model.setEditStrategy(QSqlTableModel.OnRowChange)
 
         self.setMinimumSize(QSize(1024, 600))
 
