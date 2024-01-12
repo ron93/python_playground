@@ -78,6 +78,16 @@ class tableModel(QtCore.QAbstractTableModel):
                 if value:
                     return QtGui.QIcon("../icon-file/icons/tick.png")
                 return QtGui.QIcon("../icon-file/icons/cross.png")
+            
+            if isinstance(value, int) or isinstance(value, float):
+                value = int(value)
+
+                # limit to range -5 ... +5 then convert to 0..10
+                value = max(-5, value) # values < -5 become -5
+                value = min(5, value) # values > +5 become +5 
+                value = value + 5 # -5 becomes 0, +5 becomes +10
+
+                return QtGui.QColor(COLORS[value])
     
         
     def rowCount(self, index) :
