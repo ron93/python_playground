@@ -17,7 +17,17 @@ class MainWindow(QMainWindow):
 
         self.model = QSqlTableModel(db=db)
         self.table.setModel(self.model)
+
         self.model.setTable("Track")
+        # set data  header
+        self.model.setHeaderData(1, Qt.Horizontal, "Name")
+        self.model.setHeaderData(2, Qt.Horizontal, "Album (ID)")
+        self.model.setHeaderData(3, Qt.Horizontal, "Media Type (ID)")
+        self.model.setHeaderData(4,Qt.Horizontal, "Genre (ID)")
+        self.model.setHeaderData(5, Qt.Horizontal, "Composer")
+        self.model.select()
+
+
         # index to sort by
         idx = self.model.fieldIndex("Milliseconds")
         # sort column index and Qt.AscendingOrder or Qt.DescendingOrder
