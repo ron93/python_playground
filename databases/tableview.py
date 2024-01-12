@@ -1,8 +1,12 @@
 import os
 import sys
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QSize
 from PySide6.QtWidgets import QApplication,  QMainWindow, QTableView
+from PySide6.QtSql import QSqlDatabase, QSqlTableModel
+
+from db import db
+
 
 class MainWindow(QMainWindow):
     
@@ -11,8 +15,13 @@ class MainWindow(QMainWindow):
 
         self.table = QTableView()
 
-        # self.mode = ?
-        # self.table.setModel(self.model)
+        self.model = QSqlTableModel(db=db)
+        self.table.setModel(self.model)
+
+        self.model.setTable("Track")
+        self.model.select()
+
+        self.setMinimumSize(QSize(1024, 600))
 
         self.setCentralWidget(self.table)
 
