@@ -19,7 +19,15 @@ class MainWindow(QMainWindow):
         self.table.setModel(self.model)
 
         self.model.setTable("Track")
+        # sort column index and Qt.AscendingOrder or Qt.DescendingOrder
+        self.model.setSort(2, Qt.DescendingOrder)
         self.model.select()
+        """
+        editing strategy:
+            QSqlTableModel.OnFieldChange
+            QSqlTableModel.OnRowChange
+            QSqlTableModel.OnManualSubmit
+        """
         self.model.setEditStrategy(QSqlTableModel.OnRowChange)
 
         self.setMinimumSize(QSize(1024, 600))
