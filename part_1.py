@@ -1,6 +1,11 @@
 from dataclasses import dataclass
 import dataclasses
 import struct
+import random
+
+random.seed(1)
+TYPE_A = 1
+CLASS_IN = 1
 
 @dataclass
 class DNSHeader:
@@ -28,8 +33,16 @@ def header_to_bytes(header):
 def question_to_bytes(question):
     return question.name  + struct.pack("!HH", question.type_, question.class_)
 
-def encode_dns(domain_name):
+def encode_dns_name(domain_name):
     encode = b""
     for part in domain_name.encode("ascii").split(b"."):
         encode += bytes([len(part)]) + part
     return encode + b"\x00"
+
+def build_query(domain_name, record_type):
+    name = encode_dns_name(domain_name)
+    id = random.randint(0, 65535)
+    RECURSION_DESIRED =  1 << 8 
+    header = DNSHeader(id=id, num_questions=1, flags=RECURSION_DESIRED)
+    question = DNSQuestion(name=name, type_=record_type, class_=CLASS_IN)
+    return header_to_bytes(header) + question_to_bytes(question)
