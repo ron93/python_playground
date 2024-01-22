@@ -32,14 +32,23 @@ class MainWindow(QMainWindow):
             "Name": "Name",
             "AlbumId": "Album (ID)",
             "MediaTypeId": "Media Type (ID)",
-            "GenreId":"Genre (ID)",
-            "Composer": "Composer",
+            # "GenreId":"Genre (ID)",
+            # "Composer": "Composer",
         }
+
+        columns_to_remove = ["Composer","GenreID"]
+        # remove columns in list -> columns_to_remove
+        for cn in columns_to_remove:
+            idx = self.model.fieldIndex(cn)
+            self.model.removeColumns(idx, 1)
+
         # title look-up and setting header
         for n, t in column_titles.items():
             idx = self.model.fieldIndex(n)
             self.model.setHeaderData(idx, Qt.Horizontal,  t)
+
         
+
         self.model.select()
 
         # index to sort by
