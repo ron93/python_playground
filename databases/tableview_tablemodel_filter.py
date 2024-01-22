@@ -14,6 +14,8 @@ from PySide6.QtWidgets  import (
 
 from db import db
 
+import re 
+
 basedir = os.path.dirname(__file__)
 
 class MainWindow(QMainWindow):
@@ -24,7 +26,7 @@ class MainWindow(QMainWindow):
         layout = QVBoxLayout()
 
         self.search = QLineEdit()
-        self.search.textChanged.connect(self.update_filter)
+        self.search.textChanged.connect(self.update_filter_clean)
         self.table = QTableView()
 
         layout.addWidget(self.search)
@@ -44,6 +46,12 @@ class MainWindow(QMainWindow):
     def update_filter(self, s):
         filter_str = 'Name LIKE "%{}%"'.format(s)
         self.model.setFilter(filter_str)
+
+    def update_filter_clean(self, s):
+        s = re.sub("[\W_]+", "", s)
+        filter_str = 'Name LIKE "%{}%"'.format(s)
+        self.model.setFilter(filter_str)
+
 
 app = QApplication(sys.argv)
 window = MainWindow()
