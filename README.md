@@ -1,6 +1,6 @@
 # FastAPI Middleware starter template
 
-# Contains a Github Actions workflow to :
+# .Github: github actions workflow files:
 __build jobs__
 > - test app
 > - build docker image
