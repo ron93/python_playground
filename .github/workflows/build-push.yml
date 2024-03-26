@@ -22,9 +22,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build docker image for FastAPI
       run : docker build -t '${{secrets.DOCKER_USERNAME}}'/fastapi-middleware:'${{github.sha}}' .
-    #   uses: actions/setup-python@v3
-    #   with:
-    #     python-version: "3.10"
+    
     - name: Logging to the Docker hub
       run: docker login --username '${{secrets.DOCKER_USERNAME}}' --password '${{secrets.DOCKER_PASSWORD}}'
     - name: push image to docker hub
