@@ -18,7 +18,7 @@ class RateLimitingMiddleware(BaseHTTPMiddleware):
         # Dict to store request counts for each IP
         self.request_counts = {}
 
-    async def disptch(self, request, call_next):
+    async def dispatch(self, request, call_next):
         # get client IP
         client_ip = request.client.host
 
